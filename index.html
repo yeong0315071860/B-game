@@ -6,10 +6,10 @@
             	left:0px;
                 top:0px;
             	width:128px;
-                height:128px;
+                height:110px;
                 position:absolute;
-            	background:url('http://guidesmedia.ign.com/guides/059687/images/blackwhite/pokemans_025.gif') center;
-                background-size: 128px 128px;
+            	background:url('http://www.foresightalliance.com/wp-content/uploads/2014/05/ngbbs4dd5526357d9e.gif') center;
+                background-size: 128px 100px;
             }
         </style>
 
@@ -41,7 +41,7 @@
 				if (new_direction == "left") {
 					old_x = getPos(character).x;
 					old_y = getPos(character).y;
-                    old_x--;
+                    old_x = old_x - 10;
 					if (old_x > 0) {
                 		character.style.left = old_x;
                     }
@@ -49,14 +49,14 @@
                 } else if (new_direction == "right") {
 					old_x = getPos(character).x;
 					old_y = getPos(character).y;
-                    old_x++;
+                    old_x = old_x + 10;
 					if (old_x < (window.innerWidth - 128)) {
                 		character.style.left = old_x;
                     }
 				} else if (new_direction == "up") {
 					old_x = getPos(character).x;
 					old_y = getPos(character).y;
-                    old_y--;
+                    old_y = old_y - 10;
 					if (old_y > 0) {
                 		character.style.top = old_y;
                     }
@@ -66,7 +66,7 @@
 
 					old_x = getPos(character).x;
 					old_y = getPos(character).y;
-                    old_y++;
+                    old_y = old_y + 10;
 					if (old_y < (window.innerHeight - 128)) {
                 		character.style.top = old_y;
                     }
