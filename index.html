@@ -2,18 +2,47 @@
 	<head>
     
     	<style>
+        	body {
+            	margin:0px;
+                position:absolute;
+                left:0px;
+                top:0px;
+                
+            }
+        	#container {
+            	background:url('https://duskfire.files.wordpress.com/2011/08/pyracerz.png') top no-repeat;
+                background-size:1108px 875px;
+                height:1108px;
+                width:875px;
+                position:absolute;
+                left:0px;
+                top:0px;
+                
+		
+            }
+        
         	#character_1 {
             	left:0px;
                 top:0px;
             	width:128px;
-                height:110px;
-                position:absolute;
-            	background:url('http://www.foresightalliance.com/wp-content/uploads/2014/05/ngbbs4dd5526357d9e.gif') center;
-                background-size: 128px 100px;
+                height:128px;
+                position:relative;
+            	background:url('http://guidesmedia.ign.com/guides/059687/images/blackwhite/pokemans_025.gif') center;
+                background-size: 128px 128px;
             }
+            
+            
+            
         </style>
 
     	<script>
+                    
+            function readMouseMove(e){
+				console.log(e.clientX + ":" + e.clientY);
+            }
+
+            document.onmousemove = readMouseMove;
+
             	var new_direction;
                 var new_x;
                 var new_y;
@@ -34,15 +63,34 @@
 
 			}
 
+
+
+
+			function check_map(x,y) {
+            	var lx;
+                var ly;
+                if (x < 232 || x > 735) {
+                	if (y < 577 && y > 692) {
+                    	return false;
+                    }
+                }
+                
+                return true;
+              }
+                
+              
         	function move_character() {
                 character = document.getElementById("character_1");
+                container = document.getElementById("container");
 
 
 				if (new_direction == "left") {
 					old_x = getPos(character).x;
 					old_y = getPos(character).y;
                     old_x = old_x - 10;
-					if (old_x > 0) {
+                    if (!check_map(old_x,old_y)) {
+                    
+						if (old_x > 30) {
                 		character.style.left = old_x;
                     }
                 
@@ -50,14 +98,14 @@
 					old_x = getPos(character).x;
 					old_y = getPos(character).y;
                     old_x = old_x + 10;
-					if (old_x < (window.innerWidth - 128)) {
+					if (old_x < (900 - 150)) {
                 		character.style.left = old_x;
                     }
 				} else if (new_direction == "up") {
 					old_x = getPos(character).x;
 					old_y = getPos(character).y;
                     old_y = old_y - 10;
-					if (old_y > 0) {
+					if (old_y > 40) {
                 		character.style.top = old_y;
                     }
                 
@@ -67,21 +115,21 @@
 					old_x = getPos(character).x;
 					old_y = getPos(character).y;
                     old_y = old_y + 10;
-					if (old_y < (window.innerHeight - 128)) {
+					if (old_y < (700 - 128)) {
                 		character.style.top = old_y;
                     }
-
                 } else {
                 	new_direction = "right";
                 }
 			}
-            
         </script>
 
 	</head>
     <body>
-        
-        <div id="character_1" onmouseover="alert('you lose!')">
+    	
+        <div id="container">
+          <div id="character_1" onmouseover="">
+          </div>
         </div>
 		<script>
         	setInterval("move_character()",1);
